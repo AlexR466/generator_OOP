@@ -1,5 +1,5 @@
 import logging
-
+# На строке ниже ошибка импорта
 from Constants import (ARC_FORMATS, FILE_FORMATS, PATH_FOR_ARCHIVES,
                        PATH_FOR_FILES)
 from func import archive_data, make_fake_data, saver, split
@@ -12,11 +12,12 @@ logging.basicConfig(
 
 
 class Interface:
-
+    # докстринг!
+    # лучше изначальные значения прописать нулями - так будет более явно или указать дефолтное значение
     def get_input_data_of_file(self):
         logging.info('Получаем данные файла от пользователя.')
         print('Привет, давай сгенерируем файл с данными!')
-
+        # Каждая проверка - в свой метод или в одиный метод
         self.name_file: str = input('Введи имя генерируемого файла: ')
         if self.name_file == '':
             logging.info('Ошибка! Введено пустое имя файла.')
@@ -34,7 +35,7 @@ class Interface:
             logging.info('Ошибка! Вместо числа введено:'
                          f' {self.number_of_strings}.')
             raise ValueError('Необходимо ввести целое число')
-
+        # В отдельный метод
         self.full_file_name: str = (
             f'{PATH_FOR_FILES}{self.name_file}.{self.format_file}'
             )
@@ -43,6 +44,7 @@ class Interface:
         logging.info('Получаем данные архива от пользователя.')
         print('Теперь создадим архив нашего файла!')
         self.arc_name = input('Введи имя архива или оставь это поле пустым: ')
+        # Это лучше вынести и использовать дефолтное значение
         if self.arc_name == '':
             self.arc_name = f'archive_of_{self.name_file}'
 
@@ -53,7 +55,7 @@ class Interface:
         self.archieve_name: str = (
             f'{PATH_FOR_ARCHIVES}{self.arc_name}.{self.arc_format}'
         )
-
+        # Лучше все эти вопросы разделить на отдельные методы  например ask_name
         self.choice_split = input('Разделить архив на тома? yes/no: ')
         if self.choice_split == ('yes'):
             self.archieve_size = input('Введи предельный размер тома архива: ')
@@ -73,6 +75,7 @@ class Interface:
         return self.data
 
     def save_file(self):
+        # Докстринги где?
         logging.info('Сохраняем данные в файл.')
         saver(self.format_file, self.full_file_name, self.data)
         logging.info(f'Файл {self.full_file_name} создан.')

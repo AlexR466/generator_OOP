@@ -37,6 +37,7 @@ class Archivator:
         # Удаляем исходный архив
         os.remove(f'{PATH_FOR_ARCHIVES}{arc_name}.{arc_format}')
         # Формируем один архив
+        # ТАм где хочется оставить комментарий - делай отдельный метод
         with zipfile.ZipFile(
             f'{PATH_FOR_ARCHIVES}{arc_name}.{arc_format}', mode='w'
         ) as archive:

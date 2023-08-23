@@ -25,6 +25,7 @@ def make_fake_data(number_of_strings):
 
 
 def saver(format_file: str, path: str, data: list):
+    # лучше отдельным классом
     if format_file == 'xlsx':
         SaverXLSX().save_to_file(path, data)
     elif format_file == 'csv':
