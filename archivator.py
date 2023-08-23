@@ -2,7 +2,7 @@
 import os
 import zipfile
 
-from constants import BYTES_IN_KB, PATH_FOR_ARCHIVES
+from Constants import BYTES_IN_KB, PATH_FOR_ARCHIVES
 
 
 class Archivator:

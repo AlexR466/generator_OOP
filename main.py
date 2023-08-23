@@ -1,6 +1,6 @@
 import logging
 
-from constants import (ARC_FORMATS, FILE_FORMATS, PATH_FOR_ARCHIVES,
+from Constants import (ARC_FORMATS, FILE_FORMATS, PATH_FOR_ARCHIVES,
                        PATH_FOR_FILES)
 from func import archive_data, make_fake_data, saver, split
 
@@ -19,7 +19,7 @@ class Interface:
 
         self.name_file: str = input('Введи имя генерируемого файла: ')
         if self.name_file == '':
-            logging.info('Ошибка! Введено пустое имя файла')
+            logging.info('Ошибка! Введено пустое имя файла.')
             raise ValueError('Необходимо ввести название файла.')
 
         self.format_file: str = input('Введи формат генерируемого файла: ')
@@ -69,21 +69,21 @@ class Interface:
         self.choice: str = input('Сгенерировать фейковые данные (yes/no)? ')
         if self.choice == 'yes':
             self.data = make_fake_data(self.number_of_strings)
-        logging.info('Создание фейковых данных завершено')
+        logging.info('Создание фейковых данных завершено.')
         return self.data
 
     def save_file(self):
         logging.info('Сохраняем данные в файл.')
         saver(self.format_file, self.full_file_name, self.data)
-        logging.info(f'Файл {self.full_file_name} создан')
+        logging.info(f'Файл {self.full_file_name} создан.')
 
     def make_archive(self):
-        logging.info(f'Создаем архив файла.{self.full_file_name}')
+        logging.info(f'Создаем архив файла.{self.full_file_name}.')
         archive_data(self.archieve_name, self.full_file_name)
         logging.info(f'Создан архив {self.archieve_name}.')
 
     def split_archive(self):
-        logging.info(f'Создаем многотомный архив {self.archieve_name}')
+        logging.info(f'Создаем многотомный архив {self.archieve_name}.')
         split(self.arc_name, self.arc_format, self.archieve_size)
         logging.info(f'Создан многотомный архив {self.archieve_name}.')
 
@@ -96,7 +96,7 @@ class Interface:
             self.split_archive()
         else:
             self.make_archive()
-        logging.info('Работа программы завершена')
+        logging.info('Работа программы завершена.')
 
 
 def main():

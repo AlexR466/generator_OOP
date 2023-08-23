@@ -1,7 +1,7 @@
 from faker import Faker
 
-from archivator import Archivator
-from generator import SaverCSV, SaverXLSX
+from Archivator import Archivator
+from Saver import SaverCSV, SaverXLSX
 
 
 def make_fake_data(number_of_strings):
